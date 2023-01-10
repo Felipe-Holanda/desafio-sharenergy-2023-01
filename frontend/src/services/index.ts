@@ -1,12 +1,18 @@
 import axios from "axios";
 
 const mainApi = axios.create({
-    baseURL: "https://44.204.28.19:4001",
+    baseURL: "http://44.204.28.19:4001",
     headers: { "Content-Type": "application/json" }
 })
 
 const randomApi = axios.create({
-    baseURL: "https://randomuser.me/api/?nat=br&inc=gender,name,location,login&results=10",
+    baseURL: "https://randomuser.me/api",
+    params: {
+        results: 10,
+        nat: "br",
+        seeds: "sharetest",
+        inc: "name, picture, email, login"
+    },
     headers: { "Content-Type": "application/json" }
 });
 
