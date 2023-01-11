@@ -85,4 +85,12 @@ export const CardsPlace = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
+
+    .noResult{
+        background-color: white;
+        margin-top: 1.5em;
+        padding: 1em;
+        border-radius: .5em;
+        box-shadow: 0 0 .6em rgba(0,0,0,0.1);
+    }
 `
