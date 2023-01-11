@@ -1,8 +1,7 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext } from "react";
 import { mainApi } from "../services";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { useLocation } from "react-router-dom";
 
 export interface iUserData {
     _id: string;
@@ -20,18 +19,6 @@ export const UserContext = createContext({});
 
 export function ContextUser({ children }: { children: React.ReactNode }) {
 
-    useEffect(() => {
-        if (location.pathname === "/" || location.pathname === "/register") {
-            const tryToken = localStorage.getItem("@usrToken");
-            if (tryToken) {
-                setToken(tryToken);
-                setValidSession(true);
-                navigate("/dashboard")
-            }
-        }
-    }, []);
-
-    const location = useLocation();
     const navigate = useNavigate();
 
     const [token, setToken] = useState("");
@@ -63,6 +50,20 @@ export function ContextUser({ children }: { children: React.ReactNode }) {
         })
     }
 
+    function handleUpdate(data) {
+        if (data.password === "") delete data.password && delete data.confirmPassword;
+        if (data.username === "") delete data.username;
+        if (data.email === "") delete data.email;
+        if (data.password === "" && data.username === "" && data.email === "") return toast.error("Preencha ao menos um campo");
+        if (data.password !== data.confirmPassword) return toast.error("As senhas não coincidem");
+        toast.promise(mainApi.patch("/users", data, { headers: { Authorization: `Bearer ${token}` } }), {
+            loading: "Atualizando dados...",
+            success: "Dados atualizados com sucesso!",
+            error: "Erro ao atualizar dados"
+        }).then(res => setUser(res.data))
+            .catch(err => toast.error(err.response.data.message))
+    }
+
     function handleLogout() {
         localStorage.clear();
         setValidSession(false);
@@ -73,7 +74,7 @@ export function ContextUser({ children }: { children: React.ReactNode }) {
     return (
         <UserContext.Provider
             value={{
-                token, setToken, user, setUser, validSession, setValidSession, handleLogin, handleLogout, handleRegister
+                token, setToken, user, setUser, validSession, setValidSession, handleLogin, handleLogout, handleRegister, handleUpdate
             }}> {children} </UserContext.Provider>
     )
 }
