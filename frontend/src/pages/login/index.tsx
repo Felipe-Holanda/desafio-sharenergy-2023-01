@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
-import { StyledMain, StyledForm, StyledInput, StyledLabel } from "../../styles/login.page"
-import { StyledHeadline, OutlineBtn, FilledBtn, BtnSet, StyledError } from "../../styles/login.page"
+import { StyledMain, StyledForm, StyledInput, StyledLabel } from "../../styles/pages/login.page"
+import { StyledHeadline, OutlineBtn, FilledBtn, BtnSet, StyledError } from "../../styles/pages/login.page"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { loginSchema } from "../../schemas"
@@ -38,8 +38,8 @@ export default function LoginPage() {
                 {errors.username && <StyledError>{errors.username.message as string}</StyledError>}
                 <StyledLabel htmlFor="password">Senha:</StyledLabel>
                 <StyledInput type={type} placeholder="Insira sua senha" {...register("password")} />
-                {errors.password && <StyledError>{errors.password.message as string}</StyledError>}
                 <i className={eye} onClick={handlePassword}></i>
+                {errors.password && <StyledError>{errors.password.message as string}</StyledError>}
                 <div id="checkboxset">
                     <input type="checkbox" id="remember-me" {...register("keepLoggedIn")} /><label htmlFor="remember-me">Lembrar sessão</label>
                 </div>
