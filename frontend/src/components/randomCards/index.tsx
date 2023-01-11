@@ -1,4 +1,4 @@
-import { Card } from '../../styles/card.component'
+import { Card } from '../../styles/components/card.component'
 
 interface iCards {
     img: string;
