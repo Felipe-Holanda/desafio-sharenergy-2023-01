@@ -2,7 +2,7 @@ import AppInterface from "../../components/interface"
 import { useState } from "react"
 import { toast } from "react-hot-toast"
 
-import { ElementsBar, CatImage, StyledInput, StyledBtn, StyledDiv } from "../../styles/catApi.page"
+import { ElementsBar, CatImage, StyledInput, StyledBtn, StyledDiv } from "../../styles/pages/catApi.page"
 
 
 
@@ -17,7 +17,7 @@ export default function CatApiPage() {
     return (
         <AppInterface>
             <ElementsBar>
-                <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status" target="_blank">
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status" target="_blank" rel="noreferrer">
                     <i className="bx bxs-help-circle" title="Um Código HTTP é composto por 3 números e estes possuem um significado semântico referente as solicitações feitas. Clique aqui para ver os códigos HTTP Existentes!"></i>
                 </a>
                 <div>
