@@ -10,7 +10,6 @@ const randomApi = axios.create({
     params: {
         results: 10,
         nat: "br",
-        seeds: "sharetest",
         inc: "name, picture, email, login"
     },
     headers: { "Content-Type": "application/json" }

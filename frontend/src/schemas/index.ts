@@ -11,3 +11,9 @@ export const registerSchema = yup.object().shape({
     password: yup.string().required().min(6, 'Senha deve ter no mínimo 6 caracteres'),
 })
 
+export const updateSchema = yup.object().shape({
+    username: yup.string().min(4, 'Nome de usuário deve ter no mínimo 4 caracteres').matches(/^[a-zA-Z0-9]+$/, 'Nome de usuário deve conter apenas letras e números'),
+    email: yup.string().email('Email inválido'),
+    password: yup.string().min(6, 'Senha deve ter no mínimo 6 caracteres'),
+    confirmPassword: yup.string().oneOf([yup.ref('password'), null], 'Senhas não conferem')
+})

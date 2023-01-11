@@ -2,7 +2,7 @@ import { useState, useContext } from "react"
 import {
     StyledMain, StyledForm, StyledInput, StyledLabel,
     StyledHeadline, OutlineBtn, FilledBtn, BtnSet, StyledError
-} from "../../styles/login.page"
+} from "../../styles/pages/login.page"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { registerSchema } from "../../schemas"
 import { useForm } from "react-hook-form"

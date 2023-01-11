@@ -1,6 +1,6 @@
 import { ReactNode, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { UiBase, Li } from "../../styles/style.interface";
+import { UiBase, Li } from "../../styles/components/style.interface";
 import { UserContext } from "../../context";
 
 interface iUiDashboardProps {
